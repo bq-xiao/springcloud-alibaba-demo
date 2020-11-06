@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.2.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.spring.cloud.alibaba</groupId>
+    <artifactId>spring-cloud-alibaba-parent</artifactId>
+    <version>0.0.1</version>
+    <name>spring-cloud-alibaba-parent</name>
+    <packaging>pom</packaging>
+    <description>Alibaba Spring Cloud parent</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+    </properties>
+
+    <modules>
+        <module>nacos-discovery-config</module>
+        <!--
+        <module>nacos-discovery-provider</module>
+        <module>nacos-discovery-consumer</module>
+        <module>sentinel-cloud-gateway</module>
+        <module>sentinel-netflix-zuul</module>
+        <module>rocketmq-cloud-stream</module>
+        <module>nacos-microservice-user</module>
+        <module>nacos-microservice-order</module>
+        <module>spring-microservice-common</module>
+        -->
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>2.9.2</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>2.9.2</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.12</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-stream-binder-rocketmq -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-stream-binder-rocketmq</artifactId>
+                <version>0.9.0.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>2.7.3</version>
+            </dependency>
+            <!-- Zookeeper dependencies -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-dependencies-zookeeper</artifactId>
+                <version>2.7.3</version>
+                <type>pom</type>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>3.8.3</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.spring.cloud.alibaba</groupId>
+                <artifactId>spring-microservice-common</artifactId>
+                <version>0.0.1</version>
+                <scope>compile</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <repositories>
+        <repository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <executable>true</executable>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+                <!-- https://mvnrepository.com/artifact/com.spotify/dockerfile-maven-plugin -->
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>dockerfile-maven-plugin</artifactId>
+                    <version>1.4.10</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

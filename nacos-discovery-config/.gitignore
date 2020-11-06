@@ -1,0 +1,16 @@
+/.DS_Store
+.settings
+docker-gitscrum/.DS_Store
+docker-gitscrum/log/.DS_Store
+docker-gitscrum/mysql/.DS_Store
+docker-gitscrum/www/.DS_Store
+.mvn
+*.cmd
+*.classpath
+*.project
+**/.DS_Store
+**/**.DS_Store
+apollo-demo/src/main/.DS_Store
+.idea
+*.iml
+target

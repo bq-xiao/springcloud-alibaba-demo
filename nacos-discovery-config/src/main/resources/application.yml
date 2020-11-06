@@ -1,0 +1,17 @@
+debug: false
+server:
+  port: 8084
+
+spring:
+  application:
+    name: nacos-discovery-config
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
